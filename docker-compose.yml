@@ -2,11 +2,17 @@ version: "2.2"
 
 services:
 
+  crawler:
+    depends_on:
+      setup:
+        condition: service_healthy
+    image: ringloop/pisec-crawler:prova
+
   brain:
     depends_on:
       setup:
         condition: service_healthy
-    image: ringloop/pisec-brain:$IMAGE_VERSION
+    image: ringloop/pisec-brain:19fc435e396a5f0142cb853d0a7604d608bf7223
     environment:
       - ES_HOST=https://es01:9200
       - ES_USER=elastic

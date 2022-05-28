@@ -1,4 +1,3 @@
-export IMAGE_VERSION=$1 
-cat docker-compose.yml.original | envsubst '${IMAGE_VERSION}' > docker-compose.yml
+sed -i 's;.*pisec-brain.*$;    image: ringloop/pisec-brain:'"$1"';' docker-compose.yml
 docker-compose up -d brain
 
