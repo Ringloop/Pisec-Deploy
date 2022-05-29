@@ -6,13 +6,15 @@ services:
     depends_on:
       setup:
         condition: service_healthy
-    image: ringloop/pisec-crawler:prova
+    image: ringloop/pisec-crawler:1015660ef316f128b118f88264600f83e877d085
+    environment:
+      - PISEC_BRAIN_ADDR=http://brain:8080
 
   brain:
     depends_on:
       setup:
         condition: service_healthy
-    image: ringloop/pisec-brain:19fc435e396a5f0142cb853d0a7604d608bf7223
+    image: ringloop/pisec-brain:241caa1ed22b0e9acf4116a97ed79ba87bf24bc8
     environment:
       - ES_HOST=https://es01:9200
       - ES_USER=elastic
